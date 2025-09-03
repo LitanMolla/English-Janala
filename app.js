@@ -65,7 +65,7 @@ const uiWords = (lists) => {
                     <p class="text-xl">Meaning /Pronounciation</p>
                     <h4 class="font-bold text-3xl font-bangla">"${item.meaning?item.meaning:'অর্থ পাওয়া যায়নি'} / ${item.pronunciation?item.pronunciation:'উচ্চারণ পাওয়া যায়নি'}"</h4>
                     <div class="flex justify-between mt-12">
-                        <button class="w-12 h-12 bg-[#1A91FF1A] rounded-lg flex justify-center items-center cursor-pointer duration-300 hover:bg-[#1a90ff59]"><i class="fa-solid fa-circle-info "></i></button>
+                        <button onclick="my_modal_5.showModal()" class="w-12 h-12 bg-[#1A91FF1A] rounded-lg flex justify-center items-center cursor-pointer duration-300 hover:bg-[#1a90ff59]"><i class="fa-solid fa-circle-info "></i></button>
                         <button class="w-12 h-12 bg-[#1A91FF1A] rounded-lg flex justify-center items-center cursor-pointer duration-300 hover:bg-[#1a90ff59]"><i class="fa-solid fa-volume-high"></i></button>
                     </div>
                 </div>
