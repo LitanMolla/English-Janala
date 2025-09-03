@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Logo and title -->
+    <title>English Janala - Best english learnig platfrom in bangladesh</title>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Font asowme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- Tailwind css and daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Internal CSS -->
+    <style>
+        .font-bangla {
+            font-family: "Hind Siliguri", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="font-[Poppins] text-[#18181B]">
+    <!-- header part -->
+    <header class="py-4 bg-[#BADEFF42] shadow-md shadow-gray-300 fixed top-0 left-0 w-full z-50 backdrop-blur-xl">
+        <nav class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-semibold flex items-center gap-1">
+                    <span>English</span>
+                    <img src="./assets/logo.png" alt="Logo">
+                    <span class="font-bangla">জানালা</span>
+                </a>
+                <!-- Lg menu -->
+                <ul class="hidden md:flex gap-4">
+                    <li><a href="#" class="btn btn-outline btn-primary"><i
+                                class="fa-solid fa-circle-question"></i>FAQ</a></li>
+                    <li><a href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</a>
+                    </li>
+                    <li><a href="#" class="btn btn-outline btn-primary"><i
+                                class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                </ul>
+                <!-- Mobile Menu btn -->
+                <button id="mobile_btn" class="block md:hidden text-xl cursor-pointer"><i
+                        class="fa-solid fa-bars"></i></button>
+            </div>
+            <!-- Mobile menu -->
+            <ul id="mobile_menu" class="hidden md:hidden space-y-4 text-center mt-10">
+                <li><a href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i>FAQ</a>
+                </li>
+                <li><a href="#" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</a></li>
+                <li><a href="#" class="btn btn-outline btn-primary"><i
+                            class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="py-9"></div>
+    <!-- Main Section -->
+    <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <!-- Hero Section -->
+        <section class="flex flex-col-reverse md:flex-row justify-between items-center gap-10 my-10 md:my-20">
+            <div class="md:w-1/2">
+                <div class="w-full text-center md:text-left">
+                    <h1 class="md:text-5xl text-3xl font-bold mb-6"><span class="text-cyan-500">English </span>is Easy!!
+                    </h1>
+                    <p class="font-bangla text-lg font-medium md:text-2xl">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন।
+                        আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য
+                        একটি Level এ</p>
+                    <form class="space-y-5 mt-10">
+                        <input type="text" class="input" placeholder="Enter your Name" />
+                        <input type="text" class="input" placeholder="Enter your phone" />
+                        <button class="btn btn-primary block mx-auto md:mx-0">Get Started</button>
+                    </form>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <div class="flex md:justify-end justify-center">
+                    <img class="md:max-w-150 max-w-70" src="./assets/hero-student.png" alt="hero">
+                </div>
+            </div>
+        </section>
+        <!-- Let's Learn Vocabularies -->
+        <section class="my-10 md:my-20 space-y-5">
+            <h2 class="text-3xl md:text-4xl font-bold text-center"><span class="text-cyan-500">Let's</span> Learn
+                Vocabularies</h2>
+            <div id="lesson_container" class="flex justify-center flex-wrap gap-5">
+                <!-- recived data from js -->
+            </div>
+            <div id="words_conainer" class="bg-[#F8F8F8] rounded-3xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 p-7">
+                <!-- get element from js -->
+            </div>
+        </section>
+    </main>
+    <!-- js connect -->
+    <script src="./app.js"></script>
+</body>
+
+</html>
