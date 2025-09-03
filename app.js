@@ -22,7 +22,7 @@ const uiLevel = (lists) => {
     lists.map(item => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <button onclick='wordID(${item.level_no})' class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i> Lesson - ${item.level_no}</button>
+        <button id='lesson-btn-${item.level_no}' onclick='wordID(${item.level_no})' class="btn btn-outline btn-primary lesson-btn"><i class="fa-solid fa-book-open"></i> Lesson - ${item.level_no}</button>
         `;
         lessonContainer.appendChild(div);
     })
@@ -30,6 +30,14 @@ const uiLevel = (lists) => {
 
 // lesson btn click function
 const wordID = (id) => {
+    // active btn
+    const allBtn = document.querySelectorAll('.lesson-btn');
+    allBtn.forEach(item => {
+        item.classList.remove('btn-active');
+    })
+    const targetBtn = document.getElementById(`lesson-btn-${id}`)
+    targetBtn.classList.add('btn-active');
+    // data load
     const url = `https://openapi.programming-hero.com/api/level/${id}`
     fetch(url)
         .then(res => res.json())
@@ -39,6 +47,16 @@ const wordID = (id) => {
 const uiWords = (lists) => {
     const wordsConainer = getElement('words_conainer');
     wordsConainer.innerHTML = '';
+    if (lists.length == 0) {
+        wordsConainer.innerHTML = `
+                <div class="space-y-5 col-span-full font-bangla text-center py-10">
+                    <img src="./assets/alert-error.png" alt="alert" class="block mx-auto">
+                    <p class="text-xl text-gray-500">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                    <h4 class="text-4xl font-semibold">নেক্সট Lesson এ যান</h4>
+                </div>
+        `;
+        return;
+    }
     lists.map(item => {
         const div = document.createElement('div');
         div.innerHTML = `
