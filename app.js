@@ -15,6 +15,12 @@ const getTextItem = (arr) => {
     })
     return span.join(' ');
 }
+// pronounceWord
+function pronounceWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-EN"; // English
+    window.speechSynthesis.speak(utterance);
+}
 
 // loading function
 const isLoading = (status) => {
@@ -87,7 +93,7 @@ const uiWords = (lists) => {
                     <h4 class="font-bold text-3xl font-bangla">"${item.meaning ? item.meaning : 'অর্থ পাওয়া যায়নি'} / ${item.pronunciation ? item.pronunciation : 'উচ্চারণ পাওয়া যায়নি'}"</h4>
                     <div class="flex justify-between mt-12">
                         <button onclick="loadWordDetails(${item.id})" class="w-12 h-12 bg-[#1A91FF1A] rounded-lg flex justify-center items-center cursor-pointer duration-300 hover:bg-[#1a90ff59]"><i class="fa-solid fa-circle-info "></i></button>
-                        <button class="w-12 h-12 bg-[#1A91FF1A] rounded-lg flex justify-center items-center cursor-pointer duration-300 hover:bg-[#1a90ff59]"><i class="fa-solid fa-volume-high"></i></button>
+                        <button onclick="pronounceWord('${item.word}')" class="w-12 h-12 bg-[#1A91FF1A] rounded-lg flex justify-center items-center cursor-pointer duration-300 hover:bg-[#1a90ff59]"><i class="fa-solid fa-volume-high"></i></button>
                     </div>
                 </div>
         `;
@@ -115,7 +121,7 @@ const uiWordDetails = (obj) => {
                         </h3>
                         <div class="">
                             <h4 class="font-bold text-xl">Meaning</h4>
-                            <p class="text-xl font-medium font-bangla">${obj.meaning?obj.meaning:'অর্থ পাওয়া যায়নি'}</p>
+                            <p class="text-xl font-medium font-bangla">${obj.meaning ? obj.meaning : 'অর্থ পাওয়া যায়নি'}</p>
                         </div>
                         <div class="">
                             <h4 class="font-bold text-xl">Example</h4>
@@ -124,7 +130,7 @@ const uiWordDetails = (obj) => {
                         <div class="">
                             <h4 class="font-bold text-xl font-bangla">সমার্থক শব্দ গুলো</h4>
                             <div>
-                            ${getTextItem(arr)?getTextItem(arr):'সমার্থক শব্দ পাওয়া যায়নি'}
+                            ${getTextItem(arr) ? getTextItem(arr) : 'সমার্থক শব্দ পাওয়া যায়নি'}
                             </div>
                             
                         </div>
