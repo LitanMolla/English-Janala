@@ -9,15 +9,15 @@ getElement('mobile_btn').addEventListener('click', () => {
 });
 
 // convert arr to element
-const getTextItem = (arr)=>{
-    const span = arr.map(item=>{
-      return  `<span class='btn'>${item}</span>`
+const getTextItem = (arr) => {
+    const span = arr.map(item => {
+        return `<span class='btn'>${item}</span>`
     })
     return span.join(' ');
 }
 
 // loading function
-const isLoading = (status)=>{
+const isLoading = (status) => {
     if (status) {
         getElement('loading').classList.remove('hidden');
         getElement('words_conainer').classList.add('hidden');
@@ -81,7 +81,7 @@ const uiWords = (lists) => {
     lists.map(item => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="bg-white p-13 rounded-xl text-center space-y-6">
+        <div class="bg-white p-13 rounded-xl text-center space-y-6 h-full">
                     <h4 class="font-bold text-3xl">${item.word ? item.word : 'শব্দ পাওয়া যায়নি'}</h4>
                     <p class="text-xl">Meaning /Pronounciation</p>
                     <h4 class="font-bold text-3xl font-bangla">"${item.meaning ? item.meaning : 'অর্থ পাওয়া যায়নি'} / ${item.pronunciation ? item.pronunciation : 'উচ্চারণ পাওয়া যায়নি'}"</h4>
@@ -115,7 +115,7 @@ const uiWordDetails = (obj) => {
                         </h3>
                         <div class="">
                             <h4 class="font-bold text-xl">Meaning</h4>
-                            <p class="text-xl font-medium font-bangla">${obj.meaning}</p>
+                            <p class="text-xl font-medium font-bangla">${obj.meaning?obj.meaning:'অর্থ পাওয়া যায়নি'}</p>
                         </div>
                         <div class="">
                             <h4 class="font-bold text-xl">Example</h4>
@@ -124,7 +124,7 @@ const uiWordDetails = (obj) => {
                         <div class="">
                             <h4 class="font-bold text-xl font-bangla">সমার্থক শব্দ গুলো</h4>
                             <div>
-                            ${getTextItem(arr)}
+                            ${getTextItem(arr)?getTextItem(arr):'সমার্থক শব্দ পাওয়া যায়নি'}
                             </div>
                             
                         </div>
@@ -133,3 +133,26 @@ const uiWordDetails = (obj) => {
     modalContainer.appendChild(div);
     getElement('my_modal_5').showModal();
 }
+
+// Search fetures 
+getElement('search_btn').addEventListener('click', () => {
+    // remove active btn
+    const allBtn = document.querySelectorAll('.lesson-btn');
+    allBtn.forEach(item => {
+        item.classList.remove('btn-active');
+    })
+    // 
+    const inputElement = getElement('search_input');
+    const search = inputElement.value.trim().toLowerCase();
+    if (search == '') {
+        return;
+    }
+    const url = 'https://openapi.programming-hero.com/api/words/all';
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const filter = data.data.filter(item => item.word.toLowerCase().includes(search));
+            uiWords(filter)
+        })
+    inputElement.value = '';
+})
